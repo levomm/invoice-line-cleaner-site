@@ -11,7 +11,9 @@
 <body>
 <header class="site-header">
   <div class="container nav">
-    <a class="brand" href="#">Invoice Line Cleaner</a>
+    <a class="brand" href="#">
+      <img src="ChatGPT Image 26. apr 2026, 17_23_40.png" alt="Invoice Line Cleaner" class="brand-logo" />
+    </a>
     <nav>
       <a href="#how">Kuidas</a>
       <a href="#pricing">Hinnastus</a>
@@ -31,13 +33,13 @@
     <div class="canvas-wrap">
       <svg class="canvas-svg" viewBox="0 0 780 420" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
         <!-- Bezier connections between nodes -->
-        <!-- Input → Normalizer -->
+        <!-- Input -> Normalizer -->
         <path d="M 230 90 C 310 90, 290 180, 370 180" stroke="#3d3d52" stroke-width="2" fill="none" stroke-dasharray="6 4"/>
-        <!-- Input → Classifier (branch) -->
+        <!-- Input -> Classifier (branch) -->
         <path d="M 230 90 C 310 90, 350 310, 370 310" stroke="#3d3d52" stroke-width="2" fill="none" stroke-dasharray="6 4"/>
-        <!-- Normalizer → KM Output -->
+        <!-- Normalizer -> KM Output -->
         <path d="M 550 180 C 620 180, 610 235, 590 260" stroke="#3d3d52" stroke-width="2" fill="none" stroke-dasharray="6 4"/>
-        <!-- Classifier → KM Output -->
+        <!-- Classifier -> KM Output -->
         <path d="M 550 310 C 620 310, 620 270, 590 260" stroke="#3d3d52" stroke-width="2" fill="none" stroke-dasharray="6 4"/>
       </svg>
 
@@ -64,8 +66,8 @@
         <div class="cnode-dot cnode-dot-out"></div>
       </div>
 
-      <!-- Node: Classifier (lower-mid) -->
-      <div class="cnode" style="left:370px; top:265px;">
+      <!-- Node: Classifier (lower mid) -->
+      <div class="cnode" style="left:370px; top:260px;">
         <div class="cnode-dot cnode-dot-in"></div>
         <div class="cnode-header">Classifier</div>
         <div class="cnode-body">
@@ -77,11 +79,11 @@
       </div>
 
       <!-- Node: KM Output (right) -->
-      <div class="cnode cnode-output" style="left:590px; top:198px;">
+      <div class="cnode" style="left:590px; top:210px;">
         <div class="cnode-dot cnode-dot-in"></div>
         <div class="cnode-header">KM Output</div>
         <div class="cnode-body">
-          <div class="cnode-row cnode-row-green">Reverse charge</div>
+          <div class="cnode-row">Reverse charge</div>
           <div class="cnode-row">0% või 24%</div>
           <div class="cnode-row">Puhas JSON</div>
         </div>
@@ -89,39 +91,35 @@
     </div>
   </section>
 
-  <section id="how" class="section">
-    <div class="container">
-      <h2>Miks see töötab</h2>
-      <div class="features-grid">
-        <div class="feature-block">
-          <div class="feature-title">Kiire</div>
-          <p>API vastab alla 200 millisekundi. Batch-töötlus käsitleb tuhandeid ridu minutis — raamatupidaja ei oota.</p>
-        </div>
-        <div class="feature-block">
-          <div class="feature-title">Täpne</div>
-          <p>Mudel on treenitud Eesti KM-loogikale. Reverse charge, 0% ja 24% — õige valik tehakse rea sisu põhjal, mitte käsitsi.</p>
-        </div>
-        <div class="feature-block">
-          <div class="feature-title">Lihtne</div>
-          <p>Üks REST API päring. Töötab otse n8n, Make või Zapier flow's. Integreerimine võtab alla viieteistkümne minuti.</p>
-        </div>
+  <!-- HOW IT WORKS -->
+  <section class="features" id="how">
+    <h2>Miks see töötab</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <h3>Kiire</h3>
+        <p>API vastab alla 200 millisekundi. Batch-töötlus käsitleb tuhandeid ridu minutis — raamatupidaja ei oota.</p>
+      </div>
+      <div class="feature">
+        <h3>Täpne</h3>
+        <p>Mudel on treenitud Eesti KM-loogikale. Reverse charge, 0% ja 24% — õige valik tehakse rea sisu põhjal, mitte käsitsi.</p>
+      </div>
+      <div class="feature">
+        <h3>Lihtne</h3>
+        <p>Üks REST API päring. Töötab otse n8n, Make või Zapier flow's. Integreerimine võtab alla viieteistkümne minuti.</p>
       </div>
     </div>
   </section>
 
-  <section id="pricing" class="section section-alt">
-    <div class="container">
-      <h2>Alusta tasuta. Maksa ainult kasutuse eest.</h2>
-      <p class="pricing-sub">Esimesed 500 rida kuus on tasuta. Sealt edasi maksad ainult selle eest, mida tegelikult töötled — fikseeritud kuutasu ei ole. Hinnad on näidatud ilma KM-ita (24%).</p>
-      <a class="cta" href="mailto:hello@osx01.ee">Võta ühendust</a>
-    </div>
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <h2>Alusta tasuta. Maksa ainult kasutuse eest.</h2>
+    <p class="pricing-sub">Esimesed 500 rida kuus on tasuta. Sealt edasi maksad ainult selle eest, mida tegelikult töötled — fikseeritud kuutasu ei ole. Hinnad on näidatud ilma KM-ita (24%).</p>
+    <a class="cta" href="mailto:hello@osx01.ee">Võta ühendust</a>
   </section>
 </main>
 
-<footer class="site-footer">
-  <div class="container">
-    <small>&copy; 2026 Invoice Line Cleaner &mdash; osx01.ee</small>
-  </div>
+<footer>
+  <p>&copy; 2026 Invoice Line Cleaner &mdash; osx01.ee</p>
 </footer>
 </body>
 </html>
