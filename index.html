@@ -3,21 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Landing Page</title>
-    <meta
-      name="description"
-      content="Simple, responsive landing page starter with hero, features and CTA."
-    />
+    <title>Invoice Line Cleaner API</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header class="site-header">
       <div class="container nav">
-        <a class="brand" href="#">YourBrand</a>
+        <a class="brand" href="#">Invoice Cleaner</a>
         <nav>
           <a href="#features">Features</a>
+          <a href="#workflow">Workflow</a>
           <a href="#pricing">Pricing</a>
-          <a href="#contact">Contact</a>
         </nav>
       </div>
     </header>
@@ -25,12 +21,11 @@
     <main>
       <section class="hero">
         <div class="container">
-          <h1>Landing Page Starter</h1>
+          <h1>Puhasta arveread automaatselt</h1>
           <p>
-            Minimal, clean baseline for your product landing page. Replace copy and styles as
-            needed.
+            Vähenda käsitööd ja normaliseeri kuluread sekunditega. Sinu andmed, standardkujul.
           </p>
-          <a class="cta" href="#contact">Get Started</a>
+          <a class="cta" href="#contact">Küsi demo</a>
         </div>
       </section>
 
@@ -40,15 +35,15 @@
           <div class="grid">
             <article class="card">
               <h3>Fast Setup</h3>
-              <p>Ready-to-edit structure with semantic HTML and responsive CSS.</p>
+              <p>Ready-to-edit structure with semantic HTML.</p>
             </article>
             <article class="card">
               <h3>Readable</h3>
-              <p>Simple layout that is easy to extend without framework lock-in.</p>
+              <p>Simple layout that is easy to extend.</p>
             </article>
             <article class="card">
               <h3>Deploy Friendly</h3>
-              <p>Single-page static foundation that works with standard hosting.</p>
+              <p>Single-page static foundation.</p>
             </article>
           </div>
         </div>
@@ -56,31 +51,31 @@
 
       <section id="workflow" class="section workflow-section">
         <div class="container">
-          <h2>Kuidas API rida labi tootleb</h2>
+          <h2>Kuidas API rida läbi töötleb</h2>
           <p class="workflow-lead">
-            Uks kulurida liigub labi sama loogika iga kord - ilma kasitoota.
+            Üks kulurida liigub läbi sama loogika iga kord - ilma käsitööta.
           </p>
 
           <div class="workflow-canvas">
             <div class="workflow-node" data-step="1">
               <h3>Raw input</h3>
-              <p>"Meta ads IE", "Google Ads", "AWS eu-central-1"...</p>
+              <p>"Meta ads IE", "Google Ads"…</p>
             </div>
             <div class="workflow-node" data-step="2">
               <h3>Normalizer</h3>
-              <p>Uhtlustab nimetused ja puhastab mura.</p>
+              <p>Ühtlustab nimetused ja puhastab müra.</p>
             </div>
             <div class="workflow-node" data-step="3">
               <h3>Classifier</h3>
-              <p>Lisab kategooria ja keelevalja.</p>
+              <p>Lisab kategooria ja keelevälja.</p>
             </div>
             <div class="workflow-node" data-step="4">
               <h3>VAT hint</h3>
-              <p>Lisab KM vihje (reverse charge, 0%, 22%).</p>
+              <p>Lisab KM vihje.</p>
             </div>
             <div class="workflow-node" data-step="5">
               <h3>Clean output</h3>
-              <p>Struktureeritud rida API valjundina.</p>
+              <p>Struktureeritud rida API väljundina.</p>
             </div>
 
             <svg class="workflow-lines" viewBox="0 0 1000 200" preserveAspectRatio="none">
@@ -92,35 +87,20 @@
           </div>
         </div>
       </section>
-
-      <section id="pricing" class="section alt">
-        <div class="container">
-          <h2>Pricing</h2>
-          <p>Start free. Upgrade when you are ready.</p>
-        </div>
-      </section>
-
-      <section id="contact" class="section">
-        <div class="container">
-          <h2>Contact</h2>
-          <p>Email: hello@example.com</p>
-        </div>
-      </section>
     </main>
 
     <footer class="site-footer">
       <div class="container">
-        <small>&copy; 2026 YourBrand</small>
+        <small>&copy; 2026 Invoice Line Cleaner</small>
       </div>
     </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script>
       gsap.registerPlugin(ScrollTrigger);
-
       const nodes = gsap.utils.toArray(".workflow-node");
       const lines = gsap.utils.toArray(".wf-line");
-
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: "#workflow",
@@ -130,30 +110,10 @@
           pin: ".workflow-canvas",
         }
       });
-
       nodes.forEach((node, i) => {
-        tl.to(node, {
-          opacity: 1,
-          y: 0,
-          duration: 0.4,
-          onStart: () => node.classList.add("is-active")
-        }, i * 0.6);
-
-        if (lines[i]) {
-          tl.to(lines[i], {
-            strokeDashoffset: 0,
-            duration: 0.4,
-            ease: "none"
-          }, i * 0.6 + 0.2);
-        }
-
-        if (i > 0) {
-          const prev = nodes[i - 1];
-          tl.to(prev, {
-            opacity: 0.35,
-            duration: 0.3
-          }, i * 0.6);
-        }
+        tl.to(node, { opacity: 1, y: 0, duration: 0.4, onStart: () => node.classList.add("is-active") }, i * 0.6);
+        if (lines[i]) tl.to(lines[i], { strokeDashoffset: 0, duration: 0.4, ease: "none" }, i * 0.6 + 0.2);
+        if (i > 0) tl.to(nodes[i - 1], { opacity: 0.35, duration: 0.3 }, i * 0.6);
       });
     </script>
   </body>
