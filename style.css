@@ -50,7 +50,7 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+    height: 90px;
 }
 
 .brand {
@@ -59,7 +59,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .brand-logo {
-  height: 44px;
+    height: 80px;
   width: auto;
   display: block;
   object-fit: contain;
