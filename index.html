@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Invoice Line Cleaner API</title>
+    <meta
+      name="description"
+      content="Invoice Cleaner normaliseerib arveread automaatselt ja annab uhtlase API valjundi."
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -23,9 +27,9 @@
         <div class="container">
           <h1>Puhasta arveread automaatselt</h1>
           <p>
-            Vähenda käsitööd ja normaliseeri kuluread sekunditega. Sinu andmed, standardkujul.
+            Vahenda kasitood ja normaliseeri kuluread sekunditega. Sinu andmed, standardkujul.
           </p>
-          <a class="cta" href="#contact">Küsi demo</a>
+          <a class="cta" href="#workflow">Kusi demo</a>
         </div>
       </section>
 
@@ -35,15 +39,15 @@
           <div class="grid">
             <article class="card">
               <h3>Fast Setup</h3>
-              <p>Ready-to-edit structure with semantic HTML.</p>
+              <p>Tookorda toov API, mille saab paigaldada paari minutiga.</p>
             </article>
             <article class="card">
               <h3>Readable</h3>
-              <p>Simple layout that is easy to extend.</p>
+              <p>Iga arverida saab uhtlase struktuuri ja kategooria.</p>
             </article>
             <article class="card">
               <h3>Deploy Friendly</h3>
-              <p>Single-page static foundation.</p>
+              <p>AWS Lambda + HTTP API toob tulemuse ilma raskete teenusteta.</p>
             </article>
           </div>
         </div>
@@ -51,40 +55,47 @@
 
       <section id="workflow" class="section workflow-section">
         <div class="container">
-          <h2>Kuidas API rida läbi töötleb</h2>
+          <h2>Kuidas API rida labi tootleb</h2>
           <p class="workflow-lead">
-            Üks kulurida liigub läbi sama loogika iga kord - ilma käsitööta.
+            Uks kulurida liigub labi sama loogika iga kord - ilma kasitoota.
           </p>
 
           <div class="workflow-canvas">
             <div class="workflow-node" data-step="1">
               <h3>Raw input</h3>
-              <p>"Meta ads IE", "Google Ads"…</p>
+              <p>"Meta ads IE", "Google Ads", "AWS eu-central-1"...</p>
             </div>
             <div class="workflow-node" data-step="2">
               <h3>Normalizer</h3>
-              <p>Ühtlustab nimetused ja puhastab müra.</p>
+              <p>Uhtlustab nimetused ja puhastab mura.</p>
             </div>
             <div class="workflow-node" data-step="3">
               <h3>Classifier</h3>
-              <p>Lisab kategooria ja keelevälja.</p>
+              <p>Lisab kategooria ja keelevalja.</p>
             </div>
             <div class="workflow-node" data-step="4">
               <h3>VAT hint</h3>
-              <p>Lisab KM vihje.</p>
+              <p>Lisab KM vihje (reverse charge, 0%, 22%).</p>
             </div>
             <div class="workflow-node" data-step="5">
               <h3>Clean output</h3>
-              <p>Struktureeritud rida API väljundina.</p>
+              <p>Struktureeritud rida API valjundina.</p>
             </div>
 
-            <svg class="workflow-lines" viewBox="0 0 1000 200" preserveAspectRatio="none">
-              <line x1="80" y1="100" x2="260" y2="100" class="wf-line" />
-              <line x1="260" y1="100" x2="440" y2="100" class="wf-line" />
-              <line x1="440" y1="100" x2="620" y2="100" class="wf-line" />
-              <line x1="620" y1="100" x2="800" y2="100" class="wf-line" />
+            <svg class="workflow-lines" viewBox="0 0 1000 320" preserveAspectRatio="none">
+              <line x1="128" y1="160" x2="318" y2="160" class="wf-line" />
+              <line x1="318" y1="160" x2="508" y2="160" class="wf-line" />
+              <line x1="508" y1="160" x2="698" y2="160" class="wf-line" />
+              <line x1="698" y1="160" x2="888" y2="160" class="wf-line" />
             </svg>
           </div>
+        </div>
+      </section>
+
+      <section id="pricing" class="section alt">
+        <div class="container">
+          <h2>Pricing</h2>
+          <p>Alusta piloodiga ja laienda siis, kui protsess on paigas.</p>
         </div>
       </section>
     </main>
@@ -101,19 +112,67 @@
       gsap.registerPlugin(ScrollTrigger);
       const nodes = gsap.utils.toArray(".workflow-node");
       const lines = gsap.utils.toArray(".wf-line");
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: "#workflow",
-          start: "top center",
-          end: "bottom bottom",
-          scrub: true,
-          pin: ".workflow-canvas",
-        }
+      const mm = gsap.matchMedia();
+
+      mm.add("(min-width: 901px)", () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#workflow",
+            start: "top 45%",
+            end: "+=900",
+            scrub: true,
+            pin: ".workflow-canvas",
+          }
+        });
+
+        nodes.forEach((node, i) => {
+          tl.to(
+            node,
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.45,
+              onStart: () => node.classList.add("is-active")
+            },
+            i * 0.65
+          );
+
+          if (lines[i]) {
+            tl.to(
+              lines[i],
+              {
+                strokeDashoffset: 0,
+                duration: 0.45,
+                ease: "none"
+              },
+              i * 0.65 + 0.25
+            );
+          }
+
+          if (i > 0) {
+            tl.to(
+              nodes[i - 1],
+              {
+                opacity: 0.32,
+                duration: 0.3
+              },
+              i * 0.65
+            );
+          }
+        });
       });
-      nodes.forEach((node, i) => {
-        tl.to(node, { opacity: 1, y: 0, duration: 0.4, onStart: () => node.classList.add("is-active") }, i * 0.6);
-        if (lines[i]) tl.to(lines[i], { strokeDashoffset: 0, duration: 0.4, ease: "none" }, i * 0.6 + 0.2);
-        if (i > 0) tl.to(nodes[i - 1], { opacity: 0.35, duration: 0.3 }, i * 0.6);
+
+      mm.add("(max-width: 900px)", () => {
+        gsap.to(nodes, {
+          opacity: 1,
+          y: 0,
+          duration: 0.4,
+          stagger: 0.12,
+          scrollTrigger: {
+            trigger: "#workflow",
+            start: "top 70%",
+          }
+        });
       });
     </script>
   </body>
