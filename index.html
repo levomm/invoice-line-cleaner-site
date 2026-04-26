@@ -3,17 +3,19 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Invoice Line Cleaner API</title>
+  <title>Invoice Line Cleaner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <header class="site-header">
   <div class="container nav">
-    <a class="brand" href="#">Invoice Cleaner</a>
+    <a class="brand" href="#">Invoice Line Cleaner</a>
     <nav>
-      <a href="#how">Kuidas</a>
-      <a href="#features">Features</a>
+      <a href="#pipeline">Pipeline</a>
+      <a href="#features">API</a>
       <a href="#pricing">Hinnastus</a>
     </nav>
   </div>
@@ -21,47 +23,57 @@
 
 <main>
 
-  <!-- HERO: flow on esimene asi -->
-  <section class="hero-flow" id="how">
+  <section class="hero" id="pipeline">
     <div class="container">
-      <div class="hero-text">
-        <h1>Arveread korras.<br>Automaatselt.</h1>
-        <p>Sisesta sodi. API annab tagasi puhta rea — kategooria, KM (24%) ja normaliseeritud nimetusega.</p>
+
+      <div class="hero-copy">
+        <h1>Arveread. Korras. Iga kord.</h1>
+        <p>Saadad segase tekstirea &mdash; saad tagasi puhta nimetuse, &otilde;ige kategooria ja Eesti KM-reeglile vastava m&auml;&auml;ra. Automaatselt, iga kord, ilma k&auml;sit&ouml;&ouml;ta.</p>
         <a class="cta" href="#pricing">Alusta tasuta</a>
       </div>
 
-      <!-- 3D isomeetriline flow canvas -->
-      <div class="iso-canvas" id="workflow">
+      <div class="pipeline-canvas">
 
-        <!-- SVG curved connections -->
-        <svg class="iso-svg" viewBox="0 0 960 320" preserveAspectRatio="none">
-          <path class="iso-path" d="M 155 80 C 220 80, 230 160, 295 160" />
-          <path class="iso-path" d="M 455 160 C 520 160, 530 100, 595 100" />
-          <path class="iso-path" d="M 755 100 C 820 100, 830 180, 895 180" />
-        </svg>
-
-        <div class="iso-node" data-step="1" style="--nx:60px;--ny:40px">
-          <div class="iso-icon">&#9656;</div>
-          <h3>Raw input</h3>
-          <p>"Meta ads IE"<br>"AWS eu-west"</p>
+        <div class="pnode" data-step="1">
+          <div class="pnode-label">Raw Input</div>
+          <div class="pnode-body">
+            <span>&ldquo;Meta ads IE&rdquo;</span>
+            <span>&ldquo;AWS eu-west&rdquo;</span>
+            <span>&ldquo;Google Ads CY&rdquo;</span>
+          </div>
         </div>
 
-        <div class="iso-node" data-step="2" style="--nx:300px;--ny:120px">
-          <div class="iso-icon">&#10555;</div>
-          <h3>Normalizer</h3>
-          <p>Puhastab m&uuml;ra,<br>uhtlustab nimed</p>
+        <div class="connector"><div class="connector-line"></div></div>
+
+        <div class="pnode" data-step="2">
+          <div class="pnode-label">Normalizer</div>
+          <div class="pnode-body">
+            <span>Puhastab m&uuml;ra</span>
+            <span>&Uuml;htlustab nimed</span>
+            <span>Eemaldab duplikaadid</span>
+          </div>
         </div>
 
-        <div class="iso-node" data-step="3" style="--nx:560px;--ny:60px">
-          <div class="iso-icon">&#9776;</div>
-          <h3>Classifier</h3>
-          <p>Lisa kategooria<br>&amp; keel</p>
+        <div class="connector"><div class="connector-line"></div></div>
+
+        <div class="pnode" data-step="3">
+          <div class="pnode-label">Classifier</div>
+          <div class="pnode-body">
+            <span>Lisab kategooria</span>
+            <span>Tuvastab keele</span>
+            <span>M&auml;&auml;rab teenuse t&uuml;&uuml;bi</span>
+          </div>
         </div>
 
-        <div class="iso-node" data-step="4" style="--nx:760px;--ny:140px">
-          <div class="iso-icon">&#10003;</div>
-          <h3>KM 24%</h3>
-          <p>Reverse charge,<br>0% v&otilde;i 24%</p>
+        <div class="connector"><div class="connector-line"></div></div>
+
+        <div class="pnode pnode-output" data-step="4">
+          <div class="pnode-label">KM Output</div>
+          <div class="pnode-body">
+            <span>Reverse charge</span>
+            <span>0% v&otilde;i 24%</span>
+            <span>Puhas JSON v&auml;ljund</span>
+          </div>
         </div>
 
       </div>
@@ -71,27 +83,32 @@
   <section id="features" class="section">
     <div class="container">
       <h2>Miks see t&ouml;&ouml;tab</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>&#9889; Kiire</h3>
-          <p>API vastab &lt;200ms. Batch t&ouml;&ouml;tlus tuhandeid ridu minutis.</p>
-        </article>
-        <article class="card">
-          <h3>&#128200; T&auml;pne</h3>
-          <p>Bedrock Claude mudel. Eesti KM-reeglid sisse ehitatud.</p>
-        </article>
-        <article class="card">
-          <h3>&#128279; Lihtne</h3>
-          <p>Lihtne REST API. T&ouml;&ouml;tab n8n, Make, Zapier ja otse koodiga.</p>
-        </article>
+      <div class="features-grid">
+
+        <div class="feature-block">
+          <div class="feature-title">Kiire</div>
+          <p>API vastab alla 200 millisekundi. Batch-t&ouml;&ouml;tlus k&auml;sitleb tuhandeid ridu minutis &mdash; raamatupidaja ei oota.</p>
+        </div>
+
+        <div class="feature-block">
+          <div class="feature-title">T&auml;pne</div>
+          <p>Mudel on treenitud Eesti KM-loogikale. Reverse charge, 0% ja 24% &mdash; &otilde;ige valik tehakse rea sisu p&otilde;hjal, mitte k&auml;sitsi.</p>
+        </div>
+
+        <div class="feature-block">
+          <div class="feature-title">Lihtne</div>
+          <p>Üks REST API p&auml;ring. T&ouml;&ouml;tab otse n8n, Make v&otilde;i Zapier flow&rsquo;s. Integreerimine v&otilde;tab alla viieteistkümne minuti.</p>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <section id="pricing" class="section alt">
+  <section id="pricing" class="section section-alt">
     <div class="container">
-      <h2>Hinnastus</h2>
-      <p>Alusta tasuta. Maksa ainult kasutuse eest.</p>
+      <h2>Alusta tasuta. Maksa ainult kasutuse eest.</h2>
+      <p class="pricing-sub">Esimesed 500 rida kuus on tasuta. Sealt edasi maksad ainult selle eest, mida tegelikult t&ouml;&ouml;tled &mdash; fikseeritud kuutasu ei ole.</p>
+      <a class="cta" href="mailto:hello@osx01.ee">V&otilde;ta &uuml;hendust</a>
     </div>
   </section>
 
@@ -99,41 +116,9 @@
 
 <footer class="site-footer">
   <div class="container">
-    <small>&copy; 2026 Invoice Line Cleaner</small>
+    <small>&copy; 2026 Invoice Line Cleaner &mdash; osx01.ee</small>
   </div>
 </footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script>
-if (window.innerWidth > 900) {
-  gsap.registerPlugin(ScrollTrigger);
-  const nodes = gsap.utils.toArray(".iso-node");
-  const paths = gsap.utils.toArray(".iso-path");
-
-  paths.forEach(p => {
-    const len = p.getTotalLength();
-    p.style.strokeDasharray = len;
-    p.style.strokeDashoffset = len;
-  });
-
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#workflow",
-      start: "top 60%",
-      end: "bottom 40%",
-      scrub: 1
-    }
-  });
-
-  nodes.forEach((node, i) => {
-    tl.fromTo(node, {opacity:0, y:20}, {opacity:1, y:0, duration:0.5}, i * 0.4);
-    if (paths[i]) {
-      tl.to(paths[i], {strokeDashoffset:0, duration:0.4, ease:"none"}, i * 0.4 + 0.2);
-    }
-  });
-}
-</script>
 
 </body>
 </html>
